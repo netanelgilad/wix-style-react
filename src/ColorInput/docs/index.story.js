@@ -12,9 +12,9 @@ import {
   header,
   title,
   code as baseCode,
+  testkit,
 } from 'wix-storybook-utils/Sections';
 
-import testkit from './README.TESTKIT.md';
 import ColorInput from '..';
 import { placements } from '../../Popover';
 import allComponents from '../../../stories/utils/allComponents';
@@ -145,7 +145,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
-        { title: 'Testkit', sections: [description(testkit)] },
+        { title: 'Testkit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
       ].map(tab),
     ]),

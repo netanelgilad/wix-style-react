@@ -13,10 +13,10 @@ export const colorInputDriverFactory = base => {
     ...baseUniDriverFactory(base),
 
     /** Cancels color selection */
-    cancel: colorPickerTestkit.cancel,
+    cancel: () => colorPickerTestkit.cancel(),
 
     /** Confirms color selection */
-    confirm: colorPickerTestkit.confirm,
+    confirm: () => colorPickerTestkit.confirm(),
 
     /** Clicks on color viewer box */
     clickColorViewer: async () =>
@@ -29,25 +29,25 @@ export const colorInputDriverFactory = base => {
     },
 
     /** Returns the input value */
-    getValue: inputTestkit.getValue,
+    getValue: () => inputTestkit.getValue(),
 
     /** Returns whether there is an error */
-    hasError: inputTestkit.hasError,
+    hasError: () => inputTestkit.hasError(),
 
     /** Returns the placeholder of the input */
-    getPlaceholder: inputTestkit.getPlaceholder,
+    getPlaceholder: () => inputTestkit.getPlaceholder(),
 
     /** Return whether the input size */
-    getSize: inputTestkit.getSize,
+    getSize: () => inputTestkit.getSize(),
 
     /** Returns whether the input is disabled */
-    isDisabled: inputTestkit.isDisabled,
+    isDisabled: () => inputTestkit.isDisabled(),
 
     /** Returns whether the color picker is visible  */
     colorPickerVisible: () => colorPickerTestkit.exists(),
 
     /** Clicks on input */
-    click: inputTestkit.click,
+    click: () => inputTestkit.click(),
   };
 };
 
