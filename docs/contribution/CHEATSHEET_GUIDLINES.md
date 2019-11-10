@@ -65,3 +65,8 @@ stories/symbolsComponentsMapping
     └── tooltipPopoverFamily.js
 
 ```
+
+
+## Contribution Guide
+
+### Adding a new component to the Cheatsheet:
