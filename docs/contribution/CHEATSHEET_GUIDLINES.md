@@ -6,7 +6,7 @@
 ```
 stories/Introduction/Cheatsheet
 ├── ComponentsCheatsheet.js                 # entry file for Cheatsheet
-├── sharedComponents                        #
+├── sharedComponents                        # shared layout UI elements
 │   ├── ComponentNaming.js                  #
 │   ├── ComponentsNames.js                  #
 │   ├── FamilyStructure.js                  #
@@ -32,6 +32,5 @@ stories/Introduction/Cheatsheet
     ├── PickerFamily.js                     #
     ├── SelectionFamily.js                  #
     └── TooltipFamily.js                    #
-
 
 ```
