@@ -1,6 +1,14 @@
 # Cheatsheet Contribution
 
 
+## Symbols & Components Terminology
+
+1. `Symbol` is the visual Sketch representation of the UI Component.
+2. `Component` is the actual implementation of the UI element.
+3. `Component Story` is the documentation page which explains how to use the component.
+4. `UX Story` is the documentation page which reflects the `Symbol` constrains.
+
+
 ## Cheatsheet Files
 
 ```
