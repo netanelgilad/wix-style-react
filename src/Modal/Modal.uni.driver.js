@@ -1,7 +1,7 @@
 import { baseUniDriverFactory } from '../../test/utils/unidriver';
 
 export const modalUniDriverFactory = (base, body) => {
-  const getPortal = () => body.$('.portal');
+  const getPortal = () => body;
   const getOverlay = () => body.$('.ReactModal__Overlay');
   const getContent = () => body.$('.ReactModal__Content');
   const getCloseButton = () => body.$('[data-hook="modal-close-button"]');
