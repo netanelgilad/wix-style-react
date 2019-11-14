@@ -135,7 +135,7 @@ class Modal extends WixComponent {
     };
 
     const modalClasses = `${styles.modal} ${styles[theme]}`;
-    const portalClassName = classnames(styles.portal, {
+    const portalClassName = classnames(styles.portal, 'portal', {
       [styles.portalNonScrollable]: !scrollable,
     });
 
