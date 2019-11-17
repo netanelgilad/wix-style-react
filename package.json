@@ -47,7 +47,7 @@
     "test:e2e": "npm run test:e2e-runtime && concurrently 'npm run test:e2e-only' 'npm run storybook:e2e -- --ci' --names 'protractor,e2e-server' --success first --kill-others",
     "test:e2e-only": "NODE_ENV=production yoshi test --protractor",
     "test:e2e-runtime": "cd ./test-runtime/imports && NODE_ENV=production npm run test",
-    "test:visual": "eyes-storybook -c ./.storybook/visual",
+    "test:visual": "APPLITOOLS_SHOW_LOGS=true eyes-storybook -c ./.storybook/visual",
     "test:types": "tsc --noEmit -p tsconfig.declarations.json && npm run pr-storybook:publish",
     "test:performance": "npm run proxy-wix-ui-icons && npm run bundles:generate && npm install --no-save @wix/perfer && perfer --verbose",
     "bundles:generate": "node ./scripts/bundlify-components/bundlify.js",
