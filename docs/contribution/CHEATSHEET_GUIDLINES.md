@@ -18,8 +18,8 @@
 
 
 ### Contribution Guide
-##### New component:
-###### Map to the new symbol to the components names:
+
+##### Map the symbol to the components names:
 1. Add a symbol name to `stories/symbolsComponentsMapping/symbols.js`.
 2. Add the components used for this symbol to `stories/symbolsComponentsMapping/components.js`.
 3. Add the `Symbol => Components` mapping to te relevant family file (listed under the `families` directory).
@@ -27,3 +27,14 @@
 
 
 **Note:** This mapping can be used to get the `Component` / `Symbol` URLs and therefore should be maintained.
+
+
+##### Add an example to the cheatsheet:
+###### Shared UI elements arcitecture:
+![pseudo interactive example](../assets/cheatsheet-ui-elements.png).
+
+1. Use the shared UI Components listed under `stories/Introduction/Cheatsheet/sharedComponents` to design the example layout.
+2. Import the new component to the relevant family file.
+2. Get the relevant `Symbol => Components` mapping (Step 3 above).
+3. Use the utils listed under `stories/Introduction/Cheatsheet/sharedComponents/utils.js` to link the symbols & components to the relevant documentation page.
+4. Implement the example and add it to the `<FamilyStructure/>`.
