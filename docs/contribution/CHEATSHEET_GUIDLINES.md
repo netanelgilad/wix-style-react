@@ -18,12 +18,12 @@
 
 
 ### Contribution Guide
-##### Adding a new component to the Cheatsheet:
-* Adding a new component to the **Symbols & Components** mapping:
-    1. Adding a symbol name to `stories/symbolsComponentsMapping/symbols.js`.
-    2. Adding the components used for this symbol to `stories/symbolsComponentsMapping/components.js`.
-    3. Adding the `Symbol => Components` mapping to te relevant family file (listed under the `families` directory).
-    4. **(optional)** Adding the actual symbol and / or actual component name `stories/symbolsComponentsMapping/storybookMapping.js`
+##### New component:
+###### Map to the new symbol to the components names:
+1. Add a symbol name to `stories/symbolsComponentsMapping/symbols.js`.
+2. Add the components used for this symbol to `stories/symbolsComponentsMapping/components.js`.
+3. Add the `Symbol => Components` mapping to te relevant family file (listed under the `families` directory).
+4. **(optional)** Add the actual symbol and / or actual component name `stories/symbolsComponentsMapping/storybookMapping.js`
 
 
 **Note:** This mapping can be used to get the `Component` / `Symbol` URLs and therefore should be maintained.
