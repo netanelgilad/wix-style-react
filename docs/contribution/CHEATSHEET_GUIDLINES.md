@@ -10,7 +10,7 @@
 
 ### Motivation
 * **Components Inventory-** improving the components discoverability.
-* **Mapping Symbol to Components-** making sure that we are aligned Symbol <=> Component as much as possible.
+* **Mapping Symbol to Components-** making sure that we are aligned `Symbol <=> Component` as much as possible.
 * **Source of truth**
 * **Bridge the gap between the design and the actual implementation:**
     * Helping the FEDs to understand which components to use based on the UX symbol which is displayed in the Zeplin files.
@@ -19,9 +19,11 @@
 
 ### Contribution Guide
 ##### Adding a new component to the Cheatsheet:
-* Adding the new component to the **Symbols & Components** mapping:
-    1.
+* Adding a new component to the **Symbols & Components** mapping:
+    1. Adding a symbol name to `stories/symbolsComponentsMapping/symbols.js`.
+    2. Adding the components used for this symbol to `stories/symbolsComponentsMapping/components.js`.
+    3. Adding the `Symbol => Components` mapping to te relevant family file (listed under the `families` directory).
+    4. **(optional)** Adding the actual symbol and / or actual component name `stories/symbolsComponentsMapping/storybookMapping.js`
 
 
-##### Adding an example to an existed component:
-
+**Note:** This mapping can be used to get the `Component` / `Symbol` URLs and therefore should be maintained.
