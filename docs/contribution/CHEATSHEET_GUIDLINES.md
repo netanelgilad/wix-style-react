@@ -1,6 +1,6 @@
 # Cheatsheet Contribution
 
-### Symbols & Components Terminology
+## Symbols & Components Terminology
 
 1. `Symbol` is the visual Sketch representation of the UI Component.
 2. `Component` is the actual implementation of the UI element.
@@ -8,7 +8,7 @@
 4. `UX Story` is the documentation page which reflects the `Symbol` constrains.
 
 
-### Motivation
+## Motivation
 * **Components Inventory-** improving the components discoverability.
 * **Mapping Symbol to Components-** making sure that we are aligned `Symbol <=> Component` as much as possible.
 * **Source of truth**
@@ -17,9 +17,9 @@
     * Helping the UX Designers & Product to understand how the components behave and implemented.
 
 
-### Contribution Guide
+## Contribution Guide
 
-#### Map the symbol to the components names:
+### Map the symbol to the components names:
 1. Add a symbol name to `stories/symbolsComponentsMapping/symbols.js`.
 2. Add the components used for this symbol to `stories/symbolsComponentsMapping/components.js`.
 3. Add the `Symbol => Components` mapping to te relevant family file (listed under the `families` directory).
@@ -29,15 +29,14 @@
 **Note:** This mapping can be used to get the `Component` / `Symbol` URLs and therefore should be maintained.
 
 
-#### Add an example to the cheatsheet:
+### Add an example to the cheatsheet:
 
-##### Shared UI elements arcitecture:
-![pseudo interactive example](../assets/cheatsheet-ui-elements.png).
-
+#### Shared UI elements arcitecture:
+![shared ui elements](../assets/cheatsheet-ui-elements.png).
 
 
 1. Use the shared UI Components listed under `stories/Introduction/Cheatsheet/sharedComponents` to design the example layout.
 2. Import the new component to the relevant family file.
-2. Get the relevant `Symbol => Components` mapping (Step 3 above).
-3. Use the utils listed under `stories/Introduction/Cheatsheet/sharedComponents/utils.js` to link the symbols & components to the relevant documentation page.
-4. Implement the example and add it to the `<FamilyStructure/>`.
+3. Get the relevant `Symbol => Components` mapping (Step 3 above).
+4. Use the utils listed under `stories/Introduction/Cheatsheet/sharedComponents/utils.js` to link the symbols & components to the relevant documentation page.
+5. Implement the example and add it to the `<FamilyStructure/>`.
