@@ -34,7 +34,7 @@
 #### Shared UI elements arcitecture:
 ![shared ui elements](../assets/cheatsheet-ui-elements.png).
 
-
+The cheatsheet is listed under `stories/Introduction/Cheatsheet`.
 1. Use the shared UI Components listed under `stories/Introduction/Cheatsheet/sharedComponents` to design the example layout.
 2. Import the new component to the relevant family file.
 3. Get the relevant `Symbol => Components` mapping (Step 3 above).
