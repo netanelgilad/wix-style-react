@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ErrorIndicator from '../ErrorIndicator';
-import WixComponent from '../BaseComponents/WixComponent';
 import debounce from 'lodash/debounce';
 import isNaN from 'lodash/isNaN';
 
@@ -13,7 +12,7 @@ import { dataHooks } from './constants';
 /**
  * General inputArea container
  */
-class InputArea extends WixComponent {
+class InputArea extends React.PureComponent {
   constructor(props) {
     super(props);
     this._onKeyDown = this._onKeyDown.bind(this);
@@ -37,7 +36,6 @@ class InputArea extends WixComponent {
   static MIN_ROWS = 2;
 
   componentDidMount() {
-    super.componentDidMount();
     this.props.autoFocus && this._onFocus();
   }
 
@@ -52,6 +50,7 @@ class InputArea extends WixComponent {
 
   render() {
     const {
+      dataHook,
       autoFocus,
       defaultValue,
       disabled,
@@ -120,7 +119,7 @@ class InputArea extends WixComponent {
     });
 
     return (
-      <div className={styles.wrapper}>
+      <div data-hook={dataHook} className={styles.wrapper}>
         <div className={classes}>
           <textarea
             rows={rowsAttr}
@@ -283,6 +282,9 @@ InputArea.defaultProps = {
 };
 
 InputArea.propTypes = {
+  /** Applied as data-hook HTML attribute that can be used in the tests */
+  dataHook: PropTypes.string,
+
   ariaControls: PropTypes.string,
   ariaDescribedby: PropTypes.string,
   ariaLabel: PropTypes.string,
@@ -292,7 +294,6 @@ InputArea.propTypes = {
 
   /** Standard React Input autoSelect (select the entire text of the element on focus) */
   autoSelect: PropTypes.bool,
-  dataHook: PropTypes.string,
 
   /** Specifies the size of the input */
   size: PropTypes.oneOf(['small', 'normal']),

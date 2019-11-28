@@ -1,19 +1,21 @@
 import React from 'react';
-import { bool, node } from 'prop-types';
+import PropTypes, { bool, node } from 'prop-types';
 import { Animator } from 'wix-animations';
 
 import Divider from '../Divider';
 import styles from './Header.scss';
-import WixComponent from '../../BaseComponents/WixComponent';
 import Heading from '../../Heading';
 import Text from '../../Text';
 
 const isString = a => typeof a === 'string';
 
-class Header extends WixComponent {
+class Header extends React.PureComponent {
   static displayName = 'Card.Header';
 
   static propTypes = {
+    /** Applied as data-hook HTML attribute that can be used in the tests */
+    dataHook: PropTypes.string,
+
     /** required card title */
     title: node.isRequired,
 
@@ -36,10 +38,10 @@ class Header extends WixComponent {
   };
 
   render() {
-    const { title, subtitle, withoutDivider, suffix } = this.props;
+    const { dataHook, title, subtitle, withoutDivider, suffix } = this.props;
 
     return (
-      <div>
+      <div data-hook={dataHook}>
         <div className={styles.wrapper}>
           <div className={styles.titleWrapper}>
             {isString(title) ? (

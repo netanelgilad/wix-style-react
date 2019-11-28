@@ -1,8 +1,6 @@
 import React from 'react';
 import color from 'color';
 import { object, string, func, bool, oneOfType, node } from 'prop-types';
-
-import WixComponent from '../BaseComponents/WixComponent';
 import ColorPickerHsb from './ColorPickerHsb';
 import ColorPickerHue from './ColorPickerHue';
 import ColorPickerHistory from './ColorPickerHistory';

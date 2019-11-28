@@ -5,7 +5,6 @@ import CheckboxChecked from 'wix-ui-icons-common/system/CheckboxChecked';
 import CheckboxIndeterminate from 'wix-ui-icons-common/system/CheckboxIndeterminate';
 import Label from '../Label';
 import styles from './Checkbox.scss';
-import WixComponent from '../BaseComponents/WixComponent';
 import { withFocusable, focusableStates } from '../common/Focusable';
 
 import { generateID } from '../utils/generateId';
@@ -13,7 +12,7 @@ import Tooltip from '../Tooltip';
 import * as DATA_ATTR from './DataAttr';
 
 /** a simple WixStyle checkbox */
-class Checkbox extends WixComponent {
+class Checkbox extends React.PureComponent {
   static displayName = 'Checkbox';
 
   constructor(props) {
@@ -23,6 +22,8 @@ class Checkbox extends WixComponent {
   }
 
   static propTypes = {
+    /** Applied as data-hook HTML attribute that can be used in the tests */
+    dataHook: PropTypes.string,
     /** used for automatic testing */
     checked: PropTypes.bool,
     children: PropTypes.node,
@@ -91,6 +92,7 @@ class Checkbox extends WixComponent {
       onChange,
       children,
       className,
+      dataHook,
     } = this.props;
 
     const classname = classNames(
@@ -117,6 +119,7 @@ class Checkbox extends WixComponent {
     return (
       <div
         className={classname}
+        data-hook={dataHook}
         onFocus={this.props.focusableOnFocus}
         onBlur={this.props.focusableOnBlur}
         {...focusableStates(this.props)}

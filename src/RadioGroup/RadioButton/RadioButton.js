@@ -2,17 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import uniqueId from 'lodash/uniqueId';
 import classnames from 'classnames';
-
-import WixComponent from '../../BaseComponents/WixComponent';
-
 import styles from '../RadioGroup.scss';
 import { withFocusable, focusableStates } from '../../common/Focusable';
 import Text from '../../Text';
 
-class RadioButton extends WixComponent {
+class RadioButton extends React.PureComponent {
   static displayName = 'RadioGroup.Radio';
 
   static propTypes = {
+    /** Applied as data-hook HTML attribute that can be used in the tests */
+    dataHook: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     vAlign: PropTypes.oneOf(['center', 'top']),
     name: PropTypes.string,
@@ -46,6 +45,7 @@ class RadioButton extends WixComponent {
 
   renderButton() {
     const {
+      dataHook,
       checked,
       disabled,
       onChange,
@@ -57,6 +57,7 @@ class RadioButton extends WixComponent {
 
     return (
       <button
+        data-hook={dataHook}
         type="button"
         className={classnames(styles.radioButton, {
           [styles.checked]: checked,
@@ -76,6 +77,7 @@ class RadioButton extends WixComponent {
 
   renderRadio() {
     const {
+      dataHook,
       checked,
       children,
       content,
@@ -91,6 +93,7 @@ class RadioButton extends WixComponent {
 
     return (
       <div
+        data-hook={dataHook}
         className={classnames(styles.radioWrapper, {
           [styles.disabled]: disabled,
           [styles.checked]: checked,

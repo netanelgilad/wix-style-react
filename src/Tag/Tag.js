@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './Tag.scss';
 import CloseButton from '../CloseButton';
-import WixComponent from '../BaseComponents/WixComponent';
 import Text from '../Text';
 import noop from 'lodash/noop';
 import { dataHooks } from './Tag.helpers';
@@ -19,7 +18,7 @@ const tagToTextSize = {
 /**
  * A Tag component
  */
-class Tag extends WixComponent {
+class Tag extends React.PureComponent {
   static displayName = 'Tag';
 
   constructor(props) {
@@ -105,11 +104,12 @@ class Tag extends WixComponent {
   }
 
   render() {
-    const { id, onClick, maxWidth } = this.props;
+    const { id, onClick, maxWidth, dataHook } = this.props;
 
     return (
       <span
         className={this._getClassName()}
+        data-hook={dataHook}
         id={id}
         onClick={() => onClick(id)}
         style={{ maxWidth: `${maxWidth}px` }}
@@ -123,6 +123,9 @@ class Tag extends WixComponent {
 }
 
 Tag.propTypes = {
+  /** Applied as data-hook HTML attribute that can be used in the tests */
+  dataHook: PropTypes.string,
+
   /** The text of the tag */
   children: PropTypes.string.isRequired,
 

@@ -19,17 +19,12 @@ describe('InputArea', () => {
   });
 
   function runTests(render) {
-    afterEach(() => cleanup());
-
     const createDriver = jsx => render(jsx).driver;
-
     const InputAreaForTesting = props => (
       <InputArea {...props} dataHook="textarea-div" />
     );
 
-    afterEach(() => {
-      cleanup();
-    });
+    afterEach(cleanup);
 
     describe('enterText driver method', () => {
       it('passes the name and value attribute', async () => {

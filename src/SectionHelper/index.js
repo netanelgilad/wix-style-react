@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import WixComponent from '../BaseComponents/WixComponent';
 import Text from '../Text';
 import Button from '../Deprecated/Button';
 import CloseButton from '../CloseButton';
@@ -22,12 +21,13 @@ export const HELPER_APPEARANCE = {
 /**
  * Used in pages where you need to explain or mention things about the content or actions
  */
-class SectionHelper extends WixComponent {
+class SectionHelper extends React.PureComponent {
   render() {
-    const { showCloseButton, onClose } = this.props;
+    const { dataHook, showCloseButton, onClose } = this.props;
 
     return (
       <div
+        data-hook={dataHook}
         className={classNames(
           styles.root,
           HELPER_APPEARANCE[this.props.appearance],
@@ -99,6 +99,9 @@ class SectionHelper extends WixComponent {
 SectionHelper.displayName = 'SectionHelper';
 
 SectionHelper.propTypes = {
+  /** Applied as data-hook HTML attribute that can be used in the tests */
+  dataHook: PropTypes.string,
+
   /** Sets the look and feel of the component */
   appearance: PropTypes.oneOf(Object.keys(HELPER_APPEARANCE)),
 

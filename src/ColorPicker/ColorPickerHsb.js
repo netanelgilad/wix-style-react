@@ -2,12 +2,9 @@ import React from 'react';
 import { object, func } from 'prop-types';
 import color from 'color';
 import clamp from 'lodash/clamp';
-
-import WixComponent from '../BaseComponents/WixComponent';
-
 import css from './ColorPickerHsb.scss';
 
-export default class ColorPickerHsb extends WixComponent {
+class ColorPickerHsb extends React.PureComponent {
   static propTypes = {
     current: object.isRequired,
     onChange: func.isRequired,
@@ -15,8 +12,8 @@ export default class ColorPickerHsb extends WixComponent {
 
   onMarkerDragStart = e => {
     e.preventDefault();
-    window.addEventListener('mousemove', this.onMarkerDrag);
-    window.addEventListener('touchmove', this.onMarkerDrag);
+    window.addEventListener('mousemove', this.setNewColorByMouseEvent);
+    window.addEventListener('touchmove', this.setNewColorByMouseEvent);
     window.addEventListener('mouseup', this.onMarkerDragEnd);
     window.addEventListener('touchend', this.onMarkerDragEnd);
     window.addEventListener('touchcancel', this.onMarkerDragEnd);
@@ -25,15 +22,11 @@ export default class ColorPickerHsb extends WixComponent {
     this.setNewColorByMouseEvent(e);
   };
 
-  onMarkerDrag = e => {
-    this.setNewColorByMouseEvent(e);
-  };
-
   onMarkerDragEnd = () => {
-    window.removeEventListener('touchmove', this.onMarkerDrag);
-    window.removeEventListener('mousemove', this.onMarkerDrag);
+    window.removeEventListener('touchmove', this.setNewColorByMouseEvent);
+    window.removeEventListener('mousemove', this.setNewColorByMouseEvent);
     window.removeEventListener('touchcancel', this.onMarkerDragEnd);
-    window.addEventListener('touchend', this.onMarkerDragEnd);
+    window.removeEventListener('touchend', this.onMarkerDragEnd);
     window.removeEventListener('mouseup', this.onMarkerDragEnd);
   };
 
@@ -91,3 +84,5 @@ export default class ColorPickerHsb extends WixComponent {
     );
   }
 }
+
+export default ColorPickerHsb;
