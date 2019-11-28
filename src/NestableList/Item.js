@@ -1,5 +1,4 @@
 import React from 'react';
-import WixComponent from '../BaseComponents/WixComponent';
 import { findDOMNode } from 'react-dom';
 import shallowEqual from 'shallowequal';
 import { DragSource, DropTarget } from 'react-dnd';
@@ -260,7 +259,7 @@ const cardTarget = {
   },
 };
 
-class Item extends WixComponent {
+class Item extends React.PureComponent {
   componentDidMount() {
     // use empty image as a drag preview so browsers don't draw it
     // and we can draw whatever we want on the custom drag layer instead.
@@ -283,6 +282,7 @@ class Item extends WixComponent {
       useDragHandle,
       renderItem,
       theme,
+      className,
     } = this.props;
 
     const shouldRenderChildren = !isPlaceholder || isRenderDraggingChildren;
@@ -295,7 +295,7 @@ class Item extends WixComponent {
       depth: position.length,
     };
 
-    const classes = classNames('nestable-item', theme && theme.item);
+    const classes = classNames('nestable-item', className, theme && theme.item);
 
     if (useDragHandle) {
       renderParams.connectDragSource = handle => {
@@ -342,7 +342,7 @@ export const DropItemTarget = DropTarget(
   }),
 )(DragItemSource);
 
-class ItemWithContext extends WixComponent {
+class ItemWithContext extends React.PureComponent {
   render() {
     return (
       <NestableListContext.Consumer>

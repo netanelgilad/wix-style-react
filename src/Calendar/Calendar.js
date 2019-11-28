@@ -9,12 +9,10 @@ import startOfMonth from 'date-fns/start_of_month';
 import parse from 'date-fns/parse';
 import isSameDay from 'date-fns/is_same_day';
 import { CalendarView } from './utils';
-
-import WixComponent from '../BaseComponents/WixComponent';
 import localeUtilsFactory from '../LocaleUtils';
 import DatePickerHead from './DatePickerHead';
 
-export default class Calendar extends WixComponent {
+export default class Calendar extends React.PureComponent {
   static displayName = 'Calendar';
 
   static defaultProps = {
@@ -367,6 +365,7 @@ Calendar.propTypes = {
   /** Display multiple months, currently allowing only 1 or 2 */
   numOfMonths: PropTypes.oneOf([1, 2]),
 
+  /** A single CSS class name to be appended to the root element. */
   className: PropTypes.string,
 
   /** Callback function called with a Date or a Range whenever the user selects a day in the calendar */
