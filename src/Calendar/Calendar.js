@@ -342,9 +342,11 @@ export default class Calendar extends React.PureComponent {
   }
 
   render() {
+    const { dataHook, className } = this.props;
     return (
       <div
-        className={classNames(styles.calendar, this.props.className)}
+        data-hook={dataHook}
+        className={classNames(styles.calendar, className)}
         onClick={this._preventActionEventDefault}
       >
         <DayPicker
@@ -357,6 +359,9 @@ export default class Calendar extends React.PureComponent {
 }
 
 Calendar.propTypes = {
+  /** Applied as data-hook HTML attribute that can be used in the tests */
+  dataHook: PropTypes.string,
+
   /** Auto focus on selected day when component mounts or updates */
   autoFocus: PropTypes.bool,
 

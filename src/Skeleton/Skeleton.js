@@ -9,9 +9,9 @@ import styles from './Skeleton.scss';
  */
 class Skeleton extends React.PureComponent {
   render() {
-    const { content, alignment, spacing, className } = this.props;
+    const { dataHook, content, alignment, spacing, className } = this.props;
     return (
-      <div className={className}>
+      <div data-hook={dataHook} className={className}>
         {content.map((item, key) => (
           <div
             key={key}
@@ -34,6 +34,9 @@ class Skeleton extends React.PureComponent {
 Skeleton.displayName = 'Skeleton';
 
 Skeleton.propTypes = {
+  /** Applied as data-hook HTML attribute that can be used in the tests */
+  dataHook: PropTypes.string,
+
   /** The type of the skeleton */
   content: PropTypes.arrayOf(
     PropTypes.shape({
