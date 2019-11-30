@@ -1,5 +1,4 @@
 import React from 'react';
-import WixComponent from '../BaseComponents/WixComponent';
 import HighlightedItem from './HighlightedItem';
 import PropTypes from 'prop-types';
 
@@ -66,8 +65,10 @@ const highlight = (element, match, nextChildKey) => {
     : element;
 };
 
-class Highlighter extends WixComponent {
+class Highlighter extends React.PureComponent {
   static propTypes = {
+    /** Applied as data-hook HTML attribute that can be used in the tests */
+    dataHook: PropTypes.string,
     /** match to highlight */
     match: PropTypes.string,
   };
@@ -79,9 +80,10 @@ class Highlighter extends WixComponent {
   }
 
   render() {
+    const { dataHook, children, match } = this.props;
     return (
-      <span>
-        {highlight(this.props.children, this.props.match, this.nextChildKey)}
+      <span data-hook={dataHook}>
+        {highlight(children, match, this.nextChildKey)}
       </span>
     );
   }

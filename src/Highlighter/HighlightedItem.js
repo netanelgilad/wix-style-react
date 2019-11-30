@@ -1,10 +1,11 @@
 import React from 'react';
-import WixComponent from '../BaseComponents/WixComponent';
 import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash/escapeRegExp';
 
-class HighlightedItem extends WixComponent {
+class HighlightedItem extends React.PureComponent {
   static propTypes = {
+    /** Applied as data-hook HTML attribute that can be used in the tests */
+    dataHook: PropTypes.string,
     match: PropTypes.string,
     caseSensitive: PropTypes.bool,
   };
@@ -85,7 +86,8 @@ class HighlightedItem extends WixComponent {
   }
 
   render() {
-    return <span>{this.renderElement()}</span>;
+    const { dataHook } = this.props;
+    return <span data-hook={dataHook}>{this.renderElement()}</span>;
   }
 }
 

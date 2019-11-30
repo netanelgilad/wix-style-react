@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import WixComponent from '../BaseComponents/WixComponent';
 import Checkbox from '../Checkbox';
 import RadioButton from '../RadioGroup/RadioButton/RadioButton';
 import Text from '../Text';
@@ -9,8 +8,10 @@ import styles from './Selector.scss';
 import ExtraText from './ExtraText';
 import ProgressBar from './ProgressBar';
 
-class Selector extends WixComponent {
+class Selector extends React.PureComponent {
   static propTypes = {
+    /** Applied as data-hook HTML attribute that can be used in the tests */
+    dataHook: PropTypes.string,
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     image: PropTypes.node,
     imageSize: PropTypes.oneOf([
@@ -49,6 +50,7 @@ class Selector extends WixComponent {
 
   render() {
     const {
+      dataHook,
       imageSize,
       imageShape,
       image,
@@ -64,7 +66,7 @@ class Selector extends WixComponent {
     } = this.props;
 
     return (
-      <li className={styles.root} onClick={this._onClick}>
+      <li data-hook={dataHook} className={styles.root} onClick={this._onClick}>
         <div className={styles.mainPart}>
           {toggleType === 'checkbox' ? (
             <Checkbox
