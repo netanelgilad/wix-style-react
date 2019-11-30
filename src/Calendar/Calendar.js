@@ -332,12 +332,10 @@ export default class Calendar extends React.PureComponent {
   };
 
   componentDidMount() {
-    super.componentDidMount();
     this.props.autoFocus && this._focusSelectedDay();
   }
 
   componentDidUpdate(prevProps) {
-    super.componentDidUpdate(prevProps);
     if (!prevProps.autoFocus && this.props.autoFocus) {
       this._focusSelectedDay();
     }

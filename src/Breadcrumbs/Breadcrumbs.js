@@ -13,7 +13,6 @@ import {
 } from 'prop-types';
 import styles from './Breadcrumbs.scss';
 import classnames from 'classnames';
-import WixComponent from '../BaseComponents/WixComponent';
 import Text from '../Text';
 import BreadcrumbsChevronRight from 'wix-ui-icons-common/system/BreadcrumbsChevronRight';
 import { DATA_HOOKS, DATA_ACTIVE, DATA_POSITION_ID } from './constnats';
@@ -21,7 +20,7 @@ import { DATA_HOOKS, DATA_ACTIVE, DATA_POSITION_ID } from './constnats';
 /**
  * a way to visualise current navigation path
  */
-class Breadcrumbs extends WixComponent {
+class Breadcrumbs extends React.PureComponent {
   static displayName = 'Breadcrumbs';
 
   static propTypes = {
@@ -45,6 +44,8 @@ class Breadcrumbs extends WixComponent {
     activeId: oneOfType([string, number]),
     size: oneOf(['medium', 'large']),
     theme: oneOf(['onWhiteBackground', 'onGrayBackground', 'onDarkBackground']),
+    /** Applied as data-hook HTML attribute that can be used to create driver in testing */
+    dataHook: string,
   };
 
   static defaultProps = {
@@ -135,10 +136,13 @@ class Breadcrumbs extends WixComponent {
   };
 
   render() {
-    const { items, size, theme } = this.props;
+    const { items, size, theme, dataHook } = this.props;
 
     return (
-      <div className={classnames(styles[size], styles[theme])}>
+      <div
+        data-hook={dataHook}
+        className={classnames(styles[size], styles[theme])}
+      >
         {items.map((item, i, allItems) => (
           <div
             key={item.id}
