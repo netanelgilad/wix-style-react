@@ -3,7 +3,7 @@ import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import { testkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 
 import Popover from '../Popover';
-import Button from '../Button';
+import Button from '../../Button/Button';
 import popoverDriverFactory from '../Popover.driver';
 import { buttonDriverFactory } from '../../Button/Button.uni.driver';
 
@@ -52,9 +52,10 @@ describe('Popover', () => {
     driver.mouseEnter();
     expect(driver.isContentElementExists()).toBe(true);
     const buttonDriver = buttonTestkitFactory({
-      wrapper: driver.element(),
+      element: driver.getContentElement(),
       dataHook: 'test-button',
     });
+    expect(buttonDriver.exists()).toBe(true);
     buttonDriver.click();
     expect(_onClick).toBeCalled();
   });
