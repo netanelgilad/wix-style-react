@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
+import { testkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 
 import Popover from '../Popover';
+import Button from '../Button';
 import popoverDriverFactory from '../Popover.driver';
+import { buttonDriverFactory } from '../../Button/Button.uni.driver';
+
+const buttonTestkitFactory = testkitFactoryCreator(buttonDriverFactory);
 
 describe('Popover', () => {
   const createDriver = createDriverFactory(popoverDriverFactory);
@@ -22,6 +27,36 @@ describe('Popover', () => {
 
     driver.click();
     expect(onClickFn).toHaveBeenCalledTimes(1);
+  });
+
+  it('should click on a button inside content', () => {
+    const _Popover = ({ onClick }) => {
+      const [shown, setShown] = useState(false);
+      return (
+        <Popover
+          shown={shown}
+          onMouseEnter={() => setShown(true)}
+          onMouseLeave={() => setShown(false)}
+        >
+          <Popover.Element>I am the trigger!</Popover.Element>
+          <Popover.Content>
+            <Button dataHook="test-button" onClick={onClick}>
+              test
+            </Button>
+          </Popover.Content>
+        </Popover>
+      );
+    };
+    const _onClick = jest.fn();
+    const driver = createDriver(<_Popover onClick={_onClick} />);
+    driver.mouseEnter();
+    expect(driver.isContentElementExists()).toBe(true);
+    const buttonDriver = buttonTestkitFactory({
+      wrapper: driver.element(),
+      dataHook: 'test-button',
+    });
+    buttonDriver.click();
+    expect(_onClick).toBeCalled();
   });
 
   describe('propTypes validation', () => {
