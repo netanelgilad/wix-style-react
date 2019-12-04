@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
-import { testkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
+import { buttonTestkitFactory } from '../../../testkit/index';
 
 import Popover from '../Popover';
 import Button from '../../Button/Button';
 import popoverDriverFactory from '../Popover.driver';
-import { buttonDriverFactory } from '../../Button/Button.uni.driver';
-
-const buttonTestkitFactory = testkitFactoryCreator(buttonDriverFactory);
 
 describe('Popover', () => {
   const createDriver = createDriverFactory(popoverDriverFactory);
@@ -29,8 +26,8 @@ describe('Popover', () => {
     expect(onClickFn).toHaveBeenCalledTimes(1);
   });
 
-  it('should click on a button inside content', () => {
-    const _Popover = ({ onClick }) => {
+  it('should click on a button inside content', async () => {
+    const PopoverExample = ({ onClick }) => {
       const [shown, setShown] = useState(false);
       return (
         <Popover
@@ -48,15 +45,20 @@ describe('Popover', () => {
       );
     };
     const _onClick = jest.fn();
-    const driver = createDriver(<_Popover onClick={_onClick} />);
-    driver.mouseEnter();
+    const driver = createDriver(<PopoverExample onClick={_onClick} />);
+    await driver.mouseEnter();
+
     expect(driver.isContentElementExists()).toBe(true);
+
     const buttonDriver = buttonTestkitFactory({
-      element: driver.getContentElement(),
+      wrapper: driver.getContentElement(),
       dataHook: 'test-button',
     });
-    expect(buttonDriver.exists()).toBe(true);
-    buttonDriver.click();
+
+    expect(await buttonDriver.exists()).toBe(true);
+
+    await buttonDriver.click();
+
     expect(_onClick).toBeCalled();
   });
 
