@@ -9,14 +9,8 @@
   &.disabled {
     color: $D10-30;
   }
-  &.inSuffix {
-    padding-right: 6px;
-  }
 }
 
 @include withRTL() {
   padding: 0;
-  &.inSuffix {
-    padding-left: 6px;
-  }
 }

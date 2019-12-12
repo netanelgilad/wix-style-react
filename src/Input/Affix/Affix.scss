@@ -14,27 +14,19 @@
   }
 
   &.inSuffix {
-    &.small {
-      padding-left: 0;
-    }
+    padding-left: 0;
   }
 
   &.inPrefix {
-    &.small {
-      padding-right: 0;
-    }
+    padding-right: 0;
   }
 }
 
 @include withRTL() {
     &.inSuffix {
-        &.small {
-            padding-right: 0;
-        }
+        padding-right: 0;
     }
     &.inPrefix {
-        &.small {
-            padding-left: 0;
-        }
+        padding-left: 0;
     }
 }
