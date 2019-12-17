@@ -1,7 +1,12 @@
 import React from 'react';
 import { oneOf, bool, string, any } from 'prop-types';
+import classNames from 'classnames';
 import ellipsisHOC from '../common/EllipsisHOC';
 import style from './Text.st.css';
+
+// NOTE: It's not possible to load assets from modules in Stylable right now,
+// using Sass with css-loader as a workaround.
+import sassStyle from './Text.scss';
 
 /*
  * Temporary fix: SIZES, SKINS, WEIGHTS constants are copied here from constants.js
@@ -40,23 +45,31 @@ const Text = ({
 }) => {
   /* eslint-disable no-unused-vars */
   const { dataHook, ...textProps } = rest;
+  const stylableProps = style(
+    'root',
+    {
+      size,
+      secondary,
+      skin,
+      light,
+      weight,
+    },
+    rest,
+  );
+
+  const className = classNames(
+    stylableProps.className,
+    sassStyle.root,
+    sassStyle[size],
+  );
 
   return React.createElement(
     tagName,
     {
       ...textProps,
       'data-hook': dataHook,
-      ...style(
-        'root',
-        {
-          size,
-          secondary,
-          skin,
-          light,
-          weight,
-        },
-        rest,
-      ),
+      ...stylableProps,
+      className,
     },
     children,
   );

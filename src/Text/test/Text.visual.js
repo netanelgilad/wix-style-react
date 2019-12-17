@@ -22,6 +22,18 @@ const tests = [
         props: { children: <a>Link text</a> },
       },
       {
+        it: 'list',
+        props: {
+          children: (
+            <ul style={{ width: 200 }}>
+              <li>first list item with some text to span multiple lines</li>
+              <li>second list item</li>
+              <li>third list item</li>
+            </ul>
+          ),
+        },
+      },
+      {
         it: 'tagName',
         props: { tagName: 'div' },
       },

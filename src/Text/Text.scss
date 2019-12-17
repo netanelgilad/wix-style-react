@@ -1,0 +1,44 @@
+.root {
+  > ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+
+    > li {
+      position: relative;
+      padding-left: 30px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 24px;
+        height: 24px;
+        left: 0;
+        top: 1px;
+        background: no-repeat url('~wix-ui-icons-common/Confirm.svg');
+      }
+    }
+  }
+}
+
+.tiny {
+  > ul > li {
+    padding-left: 24px;
+
+    &::before {
+      width: 18px;
+      height: 18px;
+      top: -1px;
+      background: no-repeat url('~wix-ui-icons-common/ConfirmSmall.svg');
+    }
+  }
+}
+
+.small {
+  > ul > li {
+    &::before {
+      top: -1px;
+    }
+  }
+}
