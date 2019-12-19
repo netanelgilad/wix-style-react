@@ -1,10 +1,13 @@
 .root {
-  > ul {
+  ul {
     padding: 0;
-    margin: 0;
     list-style-type: none;
 
-    > li {
+    ul {
+      padding: 6px 0;
+    }
+
+    li {
       position: relative;
       padding-left: 30px;
 
@@ -24,7 +27,7 @@
 }
 
 .small {
-  > ul > li {
+  ul li {
     padding-left: 25px;
 
     &::before {
@@ -36,7 +39,7 @@
 }
 
 .tiny {
-  > ul > li {
+  ul li {
     padding-left: 21px;
 
     &::before {
