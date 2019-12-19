@@ -5,7 +5,7 @@ import ellipsisHOC from '../common/EllipsisHOC';
 import style from './Text.st.css';
 
 // NOTE: It's not possible to load assets from modules in Stylable right now,
-// using Sass with css-loader as a workaround.
+// using Sass as a workaround.
 import sassStyle from './Text.scss';
 
 /*
