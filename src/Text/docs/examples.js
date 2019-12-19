@@ -97,6 +97,17 @@ export const maxwidth = `
 
 export const custom = `
 <Text tagName="div">
-  Examles above appear as "span", while this text appears as a "div" tag.
+  Examples above appear as "span", while this text appears as a "div" tag.
+</Text>
+`;
+
+export const list = `
+<Text>
+  The list below is built using standard "ul" and "li" HTML tags.
+  <ul>
+    <li>First list item</li>
+    <li>Second list item</li>
+    <li>Third list item</li>
+  </ul>
 </Text>
 `;

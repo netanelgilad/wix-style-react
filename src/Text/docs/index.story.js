@@ -98,13 +98,13 @@ export default {
             {
               title: 'Light',
               text:
-                'Text can appear on dark or light backrounds. Use `light` prop to keep text in a high contrast.',
+                'Text can appear on dark or light backgrounds. Use `light` prop to keep text in a high contrast.',
               source: examples.light,
             },
             {
               title: 'Secondary',
               text:
-                'Text component supports secondary styling for `standard` and `light` skins. ',
+                'Text component supports secondary styling for `standard` and `light` skins.',
               source: examples.secondary,
             },
             {
@@ -122,7 +122,7 @@ export default {
             {
               title: 'Inline Link',
               text:
-                'Text component will color in link style html based links. Use them when texts links are multiline or inline.',
+                'Text component provides a style for html based links. Use them when text links are multiline or inline.',
               source: examples.link,
             },
             {
@@ -132,8 +132,9 @@ export default {
               source: examples.ellipsis,
             },
             {
-              title: `Tooltip's maxWidth`,
-              text: `When text component uses ellipis tooltip's width can be adjusted.`,
+              title: `Tooltip Width`,
+              text:
+                'Maximum width of tooltip can be adjusted with `maxWidth` prop.',
               source: examples.maxwidth,
             },
             {
@@ -141,8 +142,16 @@ export default {
               text: 'Control the rendered HTML tag.',
               source: examples.custom,
             },
-          ].map(({ title, text, source }) =>
-            columns([description({ title, text }), code({ source })]),
+            {
+              title: 'Lists',
+              text: 'Text component provides a style for HTML based lists.',
+              source: examples.list,
+            },
+          ].map(({ title: exampleTitle, text, source }) =>
+            columns([
+              description({ title: exampleTitle, text }),
+              code({ source }),
+            ]),
           ),
         ],
       }),
