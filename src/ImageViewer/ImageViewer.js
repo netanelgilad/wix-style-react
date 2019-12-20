@@ -19,6 +19,7 @@ class ImageViewer extends Component {
     this.state = {
       imageLoading: !!imageUrl,
       previousImageUrl: undefined,
+      isImageLoaded: false,
     };
   }
 
@@ -90,6 +91,7 @@ class ImageViewer extends Component {
     this.setState(
       {
         imageLoading: false,
+        isImageLoaded: true,
       },
       () => onImageLoad(e),
     );
@@ -106,11 +108,9 @@ class ImageViewer extends Component {
   };
 
   _renderImage = () => {
-    const { imageLoading } = this.state;
+    const { imageLoading, isImageLoaded } = this.state;
 
-    const { imageUrl } = this.props;
-
-    if (!imageUrl) {
+    if (!this.props.imageUrl) {
       return;
     }
 
@@ -130,6 +130,7 @@ class ImageViewer extends Component {
           /** hide container when no image provided, so AddItem behind it can be clickable */
           shouldDisplay: shouldDisplayContainer,
         })}
+        style={{ display: isImageLoaded ? 'flex' : 'none' }}
         data-container-visible={shouldDisplayContainer}
         data-hook="images-container"
       >
