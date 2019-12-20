@@ -17,7 +17,7 @@ class ImageViewer extends Component {
     const { imageUrl } = props;
 
     this.state = {
-      imageLoading: true,
+      imageLoading: !!imageUrl,
       previousImageUrl: undefined,
     };
   }
