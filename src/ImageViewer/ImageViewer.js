@@ -17,7 +17,7 @@ class ImageViewer extends Component {
     const { imageUrl } = props;
 
     this.state = {
-      imageLoading: !!imageUrl,
+      imageLoading: true,
       previousImageUrl: undefined,
     };
   }
@@ -107,6 +107,13 @@ class ImageViewer extends Component {
 
   _renderImage = () => {
     const { imageLoading } = this.state;
+
+    const { imageUrl } = this.props;
+
+    if (!imageUrl) {
+      return;
+    }
+
     const {
       currentImageUrl,
       previousImageUrl,
