@@ -463,6 +463,10 @@ $material-gap: 8px;
   .input-wrapper,
   .suffixes {
     direction: rtl;
+    .loaderContainer,
+    .warningExclamation{
+      margin: 0 0 0 $gap;
+    }
   }
   .input {
     direction: rtl;
@@ -474,6 +478,21 @@ $material-gap: 8px;
     &.withSuffix {
       padding-left: 0;
       padding-right: $double-gap;
+    }
+  }
+  &.roundInput {
+    .menu-arrow {
+      padding: 0 $gap 0 $double-gap;
+    }
+  }
+  &.size-large {
+    .menu-arrow {
+      padding: 0 $double-gap 0 $gap;
+    }
+    &.roundInput {
+      .menu-arrow {
+        padding: 0 $gap 0 $double-gap;
+      }
     }
   }
 
