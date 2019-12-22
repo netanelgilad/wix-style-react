@@ -7,12 +7,13 @@ import InputConsumer from '../InputConsumer';
 
 const Affix = ({ children, value }) => (
   <InputConsumer consumerCompName={Affix.displayName}>
-    {({ size, inSuffix, inPrefix, onInputClicked, disabled }) => {
+    {({ size, inSuffix, inPrefix, onInputClicked, disabled, rtl }) => {
       const className = classNames(styles.custom, {
         [styles.inSuffix]: inSuffix,
         [styles.inPrefix]: inPrefix,
         [styles.small]: size === 'small',
         [styles.disabled]: !!disabled,
+        [styles.rtl]: !!rtl,
       });
       return (
         <div

@@ -22,6 +22,16 @@
   }
 }
 
+.rtl.custom{
+  &.inSuffix {
+    padding: 0 0 0 6px;
+  }
+
+  &.inPrefix {
+    padding: 0 6px 0 0;
+  }
+}
+
 @include withRTL() {
   .custom {
     &.inSuffix {

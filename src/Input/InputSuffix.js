@@ -63,7 +63,6 @@ const InputSuffix = ({
         <InputWarningSuffix
           theme={theme}
           focused={focused}
-          narrow={menuArrow}
           warningMessage={statusMessage}
           tooltipPlacement={tooltipPlacement}
           onTooltipShow={onTooltipShow}
@@ -76,7 +75,6 @@ const InputSuffix = ({
         <ThemedInputErrorSuffix
           theme={theme}
           focused={focused}
-          narrow={menuArrow}
           errorMessage={statusMessage}
           tooltipPlacement={tooltipPlacement}
           onTooltipShow={onTooltipShow}
