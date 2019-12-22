@@ -462,7 +462,8 @@ $material-gap: 8px;
       direction: rtl;
       .loaderContainer,
       .warningExclamation{
-        margin: 0 0 0 $gap;
+        margin-right: 0;
+        margin-left: $gap;
       }
     }
     .input {
@@ -488,7 +489,8 @@ $material-gap: 8px;
     direction: rtl;
     .loaderContainer,
     .warningExclamation{
-      margin: 0 0 0 $gap;
+      margin-right: 0;
+      margin-left: $gap;
     }
   }
   .input {
@@ -538,7 +540,8 @@ $material-gap: 8px;
 }
 
 .warningExclamation {
-  margin: 0 $gap 0 0;
+  margin-right: $gap;
+  margin-left: 0;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -623,5 +626,6 @@ $material-gap: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 $gap 0 0;
+  margin-right: $gap;
+  margin-left: 0;
 }
