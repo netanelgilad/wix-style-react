@@ -33,9 +33,6 @@ $material-gap: 8px;
     .input{
       padding: 18px $gap;
     }
-    .menu-arrow{
-      padding: 0 $gap 0 $double-gap;
-    }
   }
   &.roundInput {
     .menu-arrow {
@@ -460,47 +457,26 @@ $material-gap: 8px;
 // RTL layout based on global style set on document body or parent element.
 @include withRTL() {
   .root,
-  .input-wrapper,
-  .suffixes {
-    direction: rtl;
-    .loaderContainer,
-    .warningExclamation{
-      margin: 0 0 0 $gap;
+  .input-wrapper{
+    .suffixes {
+      direction: rtl;
+      .loaderContainer,
+      .warningExclamation{
+        margin: 0 0 0 $gap;
+      }
     }
-  }
-  .input {
-    direction: rtl;
-
-    &.withPrefix {
-      padding-right: 0;
-      padding-left: $double-gap;
-    }
-    &.withSuffix {
-      padding-left: 0;
-      padding-right: $double-gap;
-    }
-  }
-  &.roundInput {
-    .menu-arrow {
-      padding: 0 $gap 0 $double-gap;
-    }
-  }
-  &.size-large {
-    .menu-arrow {
-      padding: 0 $double-gap 0 $gap;
+    .input {
+      direction: rtl;
     }
     &.roundInput {
       .menu-arrow {
         padding: 0 $gap 0 $double-gap;
       }
-    }
-  }
-
-  .prefix,
-  .suffix {
-    &:last-child .unit {
-      padding-left: $double-gap;
-      padding-right: $gap;
+      &.size-small{
+        .menu-arrow{
+          padding: 0 $gap;
+        }
+      }
     }
   }
 }
@@ -522,14 +498,9 @@ $material-gap: 8px;
     .menu-arrow {
       padding: 0 $gap 0 $double-gap;
     }
-  }
-  &.size-large {
-    .menu-arrow {
-      padding: 0 $double-gap 0 $gap;
-    }
-    &.roundInput {
-      .menu-arrow {
-        padding: 0 $gap 0 $double-gap;
+    &.size-small{
+      .menu-arrow{
+        padding: 0 $gap;
       }
     }
   }
