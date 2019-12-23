@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import Input from '..';
 import Search from 'wix-ui-icons-common/Search';
+import AllInputs from './AllInputs';
 
 const defaultProps = {
   value: 'Some text value...',
@@ -116,4 +117,13 @@ tests.forEach(({ describe, its }) => {
       <Input {...defaultProps} {...props} />
     ));
   });
+});
+
+storiesOf('Input', module).add('All inputs', () => {
+  return (
+    <div>
+      <AllInputs />
+      <AllInputs rtl />
+    </div>
+  );
 });
