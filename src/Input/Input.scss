@@ -457,26 +457,25 @@ $material-gap: 8px;
 // RTL layout based on global style set on document body or parent element.
 @include withRTL() {
   .root,
-  .input-wrapper{
-    .suffixes {
-      direction: rtl;
-      .loaderContainer,
-      .warningExclamation{
-        margin-right: 0;
-        margin-left: $gap;
-      }
+  .input-wrapper,
+  .suffixes {
+    direction: rtl;
+    .loaderContainer,
+    .warningExclamation{
+      margin-right: 0;
+      margin-left: $gap;
     }
-    .input {
-      direction: rtl;
+  }
+  .input {
+    direction: rtl;
+  }
+  .roundInput {
+    .menu-arrow {
+      padding: 0 $gap 0 $double-gap;
     }
-    &.roundInput {
-      .menu-arrow {
-        padding: 0 $gap 0 $double-gap;
-      }
-      &.size-small{
-        .menu-arrow{
-          padding: 0 $gap;
-        }
+    &.size-small{
+      .menu-arrow{
+        padding: 0 $gap;
       }
     }
   }
