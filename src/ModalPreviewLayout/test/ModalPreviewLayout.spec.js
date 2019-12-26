@@ -4,7 +4,6 @@ import { createRendererWithUniDriver, cleanup } from '../../../test/utils/unit';
 import ModalPreviewLayout from '../ModalPreviewLayout';
 import Box from '../../Box';
 import { modalPreviewLayoutPrivateDriverFactory } from './ModalPreviewLayout.private.uni.driver';
-import Carousel from '../../Carousel';
 
 const requiredProps = {
   children: <div />,
