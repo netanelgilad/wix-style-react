@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
 import Box from 'wix-style-react/Box';
 import Button from 'wix-style-react/Button';
@@ -25,6 +25,7 @@ const createDriver = () =>
 
 const commonProps = {
   title: 'Basic Website Design',
+  onClose: () => null,
   actions: (
     <Box align="space-between" width={'276px'}>
       <Button prefixIcon={<Print />} skin="dark">
@@ -33,7 +34,7 @@ const commonProps = {
       <Button priority="secondary" skin="light">
         Send
       </Button>
-      <IconButton skin="light">
+      <IconButton priority="secondary" size="small" skin="light">
         <More />
       </IconButton>
     </Box>
@@ -72,21 +73,51 @@ const tests = [
     describe: 'Navigation Buttons',
     its: [
       {
-        it: 'first child node',
-        props: {
-          children: multipleChildren,
-        },
+        it: 'Right Arrow button on initial render',
+        props: { children: multipleChildren },
       },
+      // {
+      //   it: 'Right & Left Arrow buttons of middle child node',
+      //   props: { children: multipleChildren },
+      //   componentDidMount: async () => {
+      //     const driver = createDriver();
+      //     await driver.clickRightNavigationButton();
+      //   },
+      // },
+      // {
+      //   it: 'Left Arrow button of last child node',
+      //   props: { children: multipleChildren },
+      //   componentDidMount: async () => {
+      //     const driver = createDriver();
+      //     await driver.clickRightNavigationButton();
+      //     await driver.clickRightNavigationButton();
+      //   },
+      // },
     ],
   },
 ];
 
+const InteractiveModalPreviewLayout = ({ componentDidMount, ...props }) => {
+  useEffect(() => {
+    componentDidMount && componentDidMount();
+  }, [componentDidMount]);
+
+  return (
+    <Modal isOpen>
+      <ModalPreviewLayout {...commonProps} {...props} />;
+    </Modal>
+  );
+};
+
 tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
+  its.forEach(({ it, props, componentDidMount }) => {
     storiesOf(`ModalPreviewLayout/${describe}`, module).add(it, () => (
-      <Modal isOpen>
-        <ModalPreviewLayout {...commonProps} {...props} />
-      </Modal>
+      <InteractiveModalPreviewLayout
+        {...commonProps}
+        {...props}
+        dataHook={dataHook}
+        componentDidMount={componentDidMount}
+      />
     ));
   });
 });

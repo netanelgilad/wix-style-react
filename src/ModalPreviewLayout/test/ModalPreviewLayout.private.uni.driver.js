@@ -8,16 +8,13 @@ export const modalPreviewLayoutPrivateDriverFactory = base => {
   );
   const leftArrow = base.$(`[data-hook="${dataHooks.modalPreviewLeftArrow}"]`);
 
-  const rightNavigationButtonUniDriver = iconButtonDriverFactory(rightArrow);
-  const leftNavigationButtonUniDriver = iconButtonDriverFactory(leftArrow);
-
   const getContent = () =>
     base.$(`[data-hook="${dataHooks.modalPreviewContent}"]`);
 
   return {
     ...publicDriverFactory(base),
-    clickRightNavigationButton: rightNavigationButtonUniDriver.click,
-    clickLeftNavigationButton: leftNavigationButtonUniDriver.click,
+    clickRightNavigationButton: rightArrow.click,
+    clickLeftNavigationButton: leftArrow.click,
     getCurrentChildIndex: async () =>
       Number(await getContent().attr('data-index')),
   };

@@ -23,6 +23,7 @@ import { ModalWrapperExample } from './examples/ModalWrapper';
 import SimpleExample from '!raw-loader!./examples/Simple';
 import FullWidthContentExample from '!raw-loader!./examples/FullWidthContent';
 import ScrollableContentExample from '!raw-loader!./examples/ScrollableContent';
+import MultipleContentExample from '!raw-loader!./examples/MultipleContent';
 import allComponents from '../../../stories/utils/allComponents';
 import { Category } from '../../../stories/storiesHierarchy';
 
@@ -145,6 +146,19 @@ export default {
             code({
               compact: true,
               source: ScrollableContentExample,
+            }),
+          ]),
+
+          columns([
+            description({
+              title: 'Example with Multiple Content',
+              text:
+                'An example for preview layout modal with title, actions and multiple content',
+            }),
+
+            code({
+              compact: true,
+              source: MultipleContentExample,
             }),
           ]),
         ],
