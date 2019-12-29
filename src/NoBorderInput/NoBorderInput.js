@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Input from '../Input/Input';
 import inputStyles from '../Input/Input.scss';
 import styles from './NoBorderInput.scss';
+import textStyles from '../Text/Text.st.css';
 
 class NoBorderInput extends React.Component {
   static StatusError = Input.StatusError;
@@ -12,7 +13,7 @@ class NoBorderInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      focus: props.autoFocus ? true : false,
+      focus: !!props.autoFocus,
     };
   }
 
@@ -55,16 +56,20 @@ class NoBorderInput extends React.Component {
       [styles.hasValue]: hasValue,
       [styles.noLabel]: !label,
     };
-    const statusClass = status && statusMessage ? styles.errorMessage : '';
-    const statusText = status && statusMessage;
 
     const renderStatusLine = () =>
-      !disabled && (
+      !disabled &&
+      status &&
+      statusMessage && (
         <div
           data-hook="status-message"
-          className={classNames(statusClass, styles.message)}
+          {...textStyles('root', {
+            size: 'tiny',
+            weight: 'thin',
+            skin: 'error',
+          })}
         >
-          {statusText}
+          {statusMessage}
         </div>
       );
 
