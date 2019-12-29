@@ -130,6 +130,7 @@ class Checkbox extends WixComponent {
           checked={checked}
           disabled={disabled}
           onChange={disabled ? null : onChange}
+          onClick={e => e.stopPropagation()}
           style={{ display: 'none' }}
         />
 
