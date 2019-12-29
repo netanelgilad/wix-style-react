@@ -279,7 +279,17 @@ class DataTable extends React.Component {
         : undefined;
 
     return (
-      <td style={column.style} width={width} className={classes} key={colNum}>
+      <td
+        style={column.style}
+        width={width}
+        className={classes}
+        onClick={
+          column.onColumnClick
+            ? event => column.onColumnClick(column, rowData, rowNum, event)
+            : undefined
+        }
+        key={colNum}
+      >
         {column.render && column.render(rowData, rowNum)}
       </td>
     );

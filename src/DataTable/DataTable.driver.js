@@ -76,6 +76,8 @@ const dataTableDriverFactory = ({ element }) => {
     hasChildWithId: id => !!protectedElement.querySelector(`#${id}`),
     clickRow: (index, eventData) =>
       ReactTestUtils.Simulate.click(getRow(index), eventData),
+    clickColumn: (rowIndex, colIndex, eventData) =>
+      ReactTestUtils.Simulate.click(getCell(rowIndex, colIndex), eventData),
     mouseEnterRow: (index, eventData) =>
       ReactTestUtils.Simulate.mouseEnter(getRow(index), eventData),
     mouseLeaveRow: (index, eventData) =>

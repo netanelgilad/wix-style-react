@@ -27,7 +27,10 @@ describe('Table', () => {
 
     const createDefaultProps = () => ({
       id: 'id',
-      data: [{ a: 'value 1', b: 'value 2' }, { a: 'value 3', b: 'value 4' }],
+      data: [
+        { a: 'value 1', b: 'value 2' },
+        { a: 'value 3', b: 'value 4' },
+      ],
       columns: [
         { title: 'Row Num', render: (row, rowNum) => rowNum },
         { title: 'A', render: row => row.a },
@@ -443,6 +446,36 @@ describe('Table', () => {
       });
     });
 
+    describe('onColumnClick', () => {
+      it(`should call onColumnClick with column data, row data and index`, async () => {
+        const columnClickHandler = jest.fn();
+        const props = {
+          ...defaultProps,
+          columns: [
+            {
+              title: 'Row Num',
+              render: (row, rowNum) => rowNum,
+              onColumnClick: columnClickHandler,
+            },
+            { title: 'A', render: row => row.a },
+          ],
+        };
+
+        const driver = createDriver(<DataTable {...props} />);
+
+        await driver.clickColumn(0, 0);
+        expect(columnClickHandler).toBeCalledWith(
+          props.columns[0],
+          props.data[0],
+          0,
+          expect.anything(),
+        );
+
+        columnClickHandler.mockReset();
+        await driver.clickColumn(0, 1);
+        expect(columnClickHandler).not.toBeCalled();
+      });
+    });
     describe('Sortable column titles', () => {
       let props;
 
@@ -555,7 +588,10 @@ describe('Table', () => {
   describe('row keys', () => {
     const createDefaultProps = () => ({
       id: 'id',
-      data: [{ a: 'value 1', b: 'value 2' }, { a: 'value 3', b: 'value 4' }],
+      data: [
+        { a: 'value 1', b: 'value 2' },
+        { a: 'value 3', b: 'value 4' },
+      ],
       columns: [
         { title: 'Row Num', render: (row, rowNum) => rowNum },
         { title: 'A', render: row => row.a },

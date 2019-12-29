@@ -8,11 +8,11 @@ const tableDriverFactory = ({ element, eventTrigger }) => {
   });
   const getTitlebar = () =>
     element.querySelector('[data-hook="table-title-bar"]');
+  const getRowCheckbox = index =>
+    dataTableDriver.getCell(index, 0).querySelector('[data-hook="row-select"]');
   const getRowCheckboxDriver = index =>
     checkboxDriverFactory({
-      element: dataTableDriver
-        .getCell(index, 0)
-        .querySelector('[data-hook="row-select"]'),
+      element: getRowCheckbox(index),
       eventTrigger,
     });
   const getBulkSelectionCheckboxDriver = () =>
@@ -65,7 +65,7 @@ const tableDriverFactory = ({ element, eventTrigger }) => {
       return getRowCheckboxDriver(index).click();
     },
     /** Click the row selection checkbox */
-    clickRowCheckbox: index => getRowCheckboxDriver(index).click(),
+    clickRowCheckbox: index => getRowCheckbox(index).click(),
     /** Click the bulk-selection checkbox */
     clickBulkSelectionCheckbox: () => getBulkSelectionCheckboxDriver().click(),
     /** Is row selected by index */

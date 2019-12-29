@@ -31,19 +31,24 @@ export function createColumns({ tableProps, bulkSelectionContext }) {
       ) : (
         <TableBulkSelectionCheckbox dataHook="table-select" />
       ),
+      onColumnClick: (column, row, rowNum, event) => {
+        if (row.unselectable) {
+          return;
+        }
+
+        const id = defaultTo(row.id, rowNum);
+        toggleSelectionById(id, 'Checkbox');
+        event.stopPropagation();
+      },
       render: (row, rowNum) => {
         const id = defaultTo(row.id, rowNum);
         return row.unselectable ? null : (
-          <div
-            onClick={e => e.stopPropagation()}
-            className={style.checkboxContainer}
-          >
+          <div className={style.checkboxContainer}>
             <Checkbox
               className={style.checkbox}
               disabled={disabled}
               dataHook="row-select"
               checked={isSelected(id)}
-              onChange={() => toggleSelectionById(id, 'Checkbox')}
             />
           </div>
         );
@@ -227,6 +232,7 @@ Table.propTypes = {
    *    * `render`: a function which will be called for every row in `data` to display this row's value for this column<br>
    *
    *  Each column can also specify these fields:
+   *    * `onColumnClick`:A callback method to be called on column click. Signature: `onColumnClick(column, rowData, rowNum, event)`.
    *    * `sortable`: Sets whether this field is sortable. If `true` clicking the header will call `onSortClick`
    *    * `sortDescending`: Sets what sort icon to display in the column header. `true` will show an up arrow, `false` will show a down arrow, `undefined' will show no icon
    *    * `infoTooltipProps`: Props object for column header's [tooltip](https://wix-wix-style-react.surge.sh/?selectedKind=7.%20Tooltips&selectedStory=7.1.%20Tooltip&full=0&addons=0&stories=1&panelRight=0). Note: `dataHook`, `moveBy` and `children` will not be passed to tooltip.
@@ -239,6 +245,7 @@ Table.propTypes = {
     PropTypes.shape({
       title: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
       render: PropTypes.func.isRequired,
+      onColumnClick: PropTypes.func,
       sortable: PropTypes.bool,
       sortDescending: PropTypes.bool,
       infoTooltipProps: PropTypes.shape(Tooltip.propTypes),

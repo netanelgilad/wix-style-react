@@ -108,6 +108,8 @@ export const dataTableUniDriverFactory = base => {
     isDisplayingHeader: () => hasHeader(),
     hasChildWithId: id => base.$(`#${id}`).exists(),
     clickRow: (index, eventData) => getRow(index).click(eventData),
+    clickColumn: (rowIndex, colIndex, eventData) =>
+      getCell(rowIndex, colIndex).click(eventData),
     mouseEnterRow: (index, eventData) =>
       ReactBase(getRow(index)).mouseEnter(eventData),
     mouseLeaveRow: (index, eventData) =>
