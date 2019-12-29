@@ -23,6 +23,7 @@
     "*.d.ts"
   ],
   "scripts": {
+    "preinstall": "echo $agentType",
     "------shared prebuilds (try to make them in watch mode)": "",
     "prestorybook": "./scripts/ensure-dist.sh && npm run generate-autodocs-registry",
     "generate-autodocs-registry": "node scripts/generate-autodocs-registry",
